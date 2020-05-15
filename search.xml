@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>React Hooks + TypeScript 实战记录</title>
-    <url>/2020/05/14/jd-share/</url>
+    <url>/jd-share/</url>
     <content><![CDATA[<h1 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h1><h2 id="什么是-Hooks"><a href="#什么是-Hooks" class="headerlink" title="什么是 Hooks"></a>什么是 Hooks</h2><ul>
 <li><code>React</code> 一直都提倡使用函数组件，但是有时候需要使用 <code>state</code> 或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有。</li>
 <li><code>Hooks</code> 是 <code>React 16.8</code> 新增的特性，它可以让你在不编写 <code>class</code> 的情况下使用 <code>state</code> 以及其他的 <code>React</code> 特性。</li>
@@ -90,7 +90,7 @@
 <h4 id="跳过-Effect-进行性能优化"><a href="#跳过-Effect-进行性能优化" class="headerlink" title="跳过 Effect 进行性能优化"></a>跳过 Effect 进行性能优化</h4><ul>
 <li>依赖项数组控制着 useEffect 的执行</li>
 <li>如果某些特定值在两次重渲染之间没有发生变化，你可以通知 React 跳过对 effect 的调用，只要传递数组作为 useEffect 的第二个可选参数即可</li>
-<li>如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行</li>
+<li>如果想执行只运行一次的 effect（仅在组件挂载时执行），可以传递一个空数组（[]）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> [number,setNumber] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">let</span> [text,setText] = useState(<span class="string">''</span>);</span><br><span class="line">  <span class="comment">// 相当于componentDidMount 和 componentDidUpdate</span></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'useEffect'</span>);</span><br><span class="line">      <span class="keyword">let</span> timer = setInterval(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">          setNumber(<span class="function"><span class="params">number</span>=&gt;</span>number+<span class="number">1</span>);</span><br><span class="line">      &#125;,<span class="number">1000</span>);</span><br><span class="line">  &#125;,[text]);<span class="comment">// 数组表示 effect 依赖的变量，只有当这个变量发生改变之后才会重新执行 efffect 函数</span></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">      &lt;&gt;</span><br><span class="line">        &lt;input value=&#123;text&#125; onChange=&#123;(e)=&gt;setText(e.target.value)&#125;/&gt;</span><br><span class="line">        &lt;p&gt;&#123;number&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">        &lt;button&gt;+&lt;/</span>button&gt;</span><br><span class="line">      &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 
@@ -146,7 +146,7 @@
 
 <h5 id="减少渲染次数"><a href="#减少渲染次数" class="headerlink" title="减少渲染次数"></a>减少渲染次数</h5><ul>
 <li>默认情况，只要父组件状态变了（不管子组件依不依赖该状态），子组件也会重新渲染</li>
-<li>般的优化：<ul>
+<li>一般的优化：<ul>
 <li>类组件：可以使用 <code>pureComponent</code> ；</li>
 <li>函数组件：使用 <code>React.memo</code> ，将函数组件传递给 <code>memo</code> 之后，就会返回一个新的组件，新组件的功能：<strong>如果接受到的属性不变，则不重新渲染函数</strong>。</li>
 </ul>
@@ -405,21 +405,8 @@
       </tags>
   </entry>
   <entry>
-    <title>React源码解析-基础(Step 1)</title>
-    <url>/2020/05/13/React%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>React</category>
-        <category>React源码解析</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
-        <tag>源码解析</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue源码解析-准备开始(Step 1)</title>
-    <url>/2020/05/13/Vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/%E5%87%86%E5%A4%87%E5%BC%80%E5%A7%8B/</url>
+    <url>/Vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/%E5%87%86%E5%A4%87%E5%BC%80%E5%A7%8B/</url>
     <content><![CDATA[<h1 id="准备开始"><a href="#准备开始" class="headerlink" title="准备开始"></a>准备开始</h1><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Z1ZWpzL3Z1ZQ==">vue 源码地址<i class="fa fa-external-link-alt"></i></span></p>
 <h2 id="源码目录设计"><a href="#源码目录设计" class="headerlink" title="源码目录设计"></a>源码目录设计</h2><p><code>Vue</code> 的主要源码都在 <code>src</code> 目录下</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">src</span><br><span class="line">├── compiler        # 编译相关</span><br><span class="line">├── core            # 核心代码</span><br><span class="line">├── platforms       # 不同平台的支持（weex、web）</span><br><span class="line">├── server          # 服务端渲染</span><br><span class="line">├── sfc             # 将.vue 文件解析成对象</span><br><span class="line">├── shared          # 共享代码</span><br></pre></td></tr></table></figure>
@@ -484,13 +471,26 @@
         <category>Vue源码解析</category>
       </categories>
       <tags>
-        <tag>源码解析</tag>
         <tag>Vue</tag>
+        <tag>源码解析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React源码解析-基础(Step 1)</title>
+    <url>/React%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>React</category>
+        <category>React源码解析</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+        <tag>源码解析</tag>
       </tags>
   </entry>
   <entry>
     <title>Vue源码解析-数据驱动(Step 2)</title>
-    <url>/2020/05/13/Vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</url>
+    <url>/Vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</url>
     <content><![CDATA[<h1 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h1><p><code>Vue</code> 的核心思想就是<strong>数据驱动视图</strong>，它相比我们传统的前端开发，减少了大量的 <code>DOM</code> 操作，大大简化了代码量，提高了代码的可维护性。特别是当交互复杂的时候，只关心数据的修改会让代码的逻辑变的非常清晰，因为 <code>DOM</code> 变成了数据的映射，我们所有的逻辑都是对数据的修改，而不用碰触 <code>DOM</code>，这样的代码非常利于维护。</p>
 <h2 id="new-Vue-的过程"><a href="#new-Vue-的过程" class="headerlink" title="new Vue 的过程"></a>new Vue 的过程</h2><p>根据上一节的分析，我们找到了 <code>Vue</code> 的入口文件，也知道了 <code>Vue</code> 是一个类，只不过用 <code>Function</code> 来实现。那么我们来看一些 <code>new Vue</code> 的时候做了什么。打开 <code>src/core/instance/index.js</code></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; !(<span class="keyword">this</span> <span class="keyword">instanceof</span> Vue)) &#123;</span><br><span class="line">    warn(<span class="string">'Vue is a constructor and should be called with the `new` keyword'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>._init(options);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -550,8 +550,8 @@
         <category>Vue源码解析</category>
       </categories>
       <tags>
-        <tag>源码解析</tag>
         <tag>Vue</tag>
+        <tag>源码解析</tag>
       </tags>
   </entry>
 </search>
